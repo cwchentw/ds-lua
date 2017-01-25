@@ -1,10 +1,8 @@
 --- `ds.Distance` class.
 -- Common distance (metric) algorithm for high-dimensional data. Use `algo.Vector`
 -- as default vector-like object.  You may implement your own vector object which
--- providing `get` and `len` method.
+-- provides `get` and `len` method.
 -- @classmod Distance
-local Vector = require "algo.Vector"
-
 local abs = math.abs
 local sqrt = math.sqrt
 
@@ -19,6 +17,67 @@ local function _check_vectors(v1, v2)
   assert(type(v2) == "table" and v2["get"] and v2["len"])
 
   assert(v1:len() == v2:len())
+end
+
+-- Check whether the method are available.
+local function _check_method(m)
+  assert(m == "euclidean" or m == "chebyshev" or m == "maximum"
+    or m == "manhattan" or m == "canberra" or m == "jaccard" or m == "binary"
+    or m == "minkowski" or m == nil)
+end
+
+--- Generalized distance method.
+-- A generalized distance method which calls specific distance method under
+-- user's request.
+-- @param v1 vector-like object
+-- @param v2 vector-like object
+-- @param options Optional. A hash-like table presents options, including:
+--
+-- method: the metric to use, currently implemented with:
+--
+--   * "euclidean"
+--   * "chebyshev" or "maximum"
+--   * "manhattan"
+--   * "canberra"
+--   * "jaccard" or "binary"
+--   * "minkowski"
+--
+-- Default to "euclidean".
+--
+-- p: the power value used in Minkowski distance.
+--
+-- @return Distance based on specific metric.
+function Distance:dist(v1, v2, options)
+  local metric = nil
+  local p = nil
+
+  if type(options) == "table" then
+    metric = options["method"]
+    p = options["p"]
+  end
+  _check_method(metric)
+
+  metric = (metric or "euclidean")
+
+  if p == nil then
+    p = 2
+  end
+
+  if metric == "euclidean" then
+    return Distance:euclidean(v1, v2)
+  elseif metric == "chebyshev" or metric == "maximum" then
+    return Distance:chebyshev(v1, v2)
+  elseif metric == "manhattan" then
+    return Distance:manhattan(v1, v2)
+  elseif metric == "canberra" then
+    return Distance:canberra(v1, v2)
+  elseif metric == "jaccard" or metric == "binary" then
+    return Distance:jaccard(v1, v2)
+  elseif metric == "minkowski" then
+    return Distance:minkowski(v1, v2, p)
+  else
+    error("Unknown distance metric: " .. metric)
+  end
 end
 
 --- Euclidean distance.
@@ -58,7 +117,7 @@ function Distance:maximum(v1, v2)
   return Distance:chebyshev(v1, v2)
 end
 
---- Manhatten distance.
+--- Manhattan distance.
 -- @param v1 vector-like object
 -- @param v2 vector-like object
 -- @return Manhatten distance.

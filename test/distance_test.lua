@@ -6,6 +6,7 @@ do
   local v1 = Vector:from_table({0, 1, 2})
   local v2 = Vector:from_table({3, 4, 5})
 
+  assert(math.abs(Distance:dist(v1, v2) - 5.196152) < 1e-6)
   assert(math.abs(Distance:euclidean(v1, v2) - 5.196152) < 1e-6)
 end
 
@@ -14,6 +15,7 @@ do
   local v1 = Vector:from_table({0, 1, 2})
   local v2 = Vector:from_table({3, 4, 5})
 
+  assert(math.abs(Distance:dist(v1, v2, { method = "maximum" }) - 3) < 1e-6)
   assert(math.abs(Distance:maximum(v1, v2) - 3) < 1e-6)
 end
 
@@ -22,6 +24,7 @@ do
   local v1 = Vector:from_table({0, 1, 2})
   local v2 = Vector:from_table({3, 4, 5})
 
+  assert(math.abs(Distance:dist(v1, v2, { method = "manhattan" }) - 9) < 1e-6)
   assert(math.abs(Distance:manhattan(v1, v2) - 9) < 1e-6)
 end
 
@@ -30,6 +33,7 @@ do
   local v1 = Vector:from_table({0, 1, 2})
   local v2 = Vector:from_table({3, 4, 5})
 
+  assert(math.abs(Distance:dist(v1, v2, { method = "canberra" }) - 2.028571) < 1e-6)
   assert(math.abs(Distance:canberra(v1, v2) - 2.028571) < 1e-6)
 end
 
@@ -38,6 +42,7 @@ do
   local v1 = Vector:from_table({0, 1, 2})
   local v2 = Vector:from_table({3, 4, 5})
 
+  assert(math.abs(Distance:dist(v1, v2, { method = "binary" }) - 0.3333333) < 1e-6)
   assert(math.abs(Distance:binary(v1, v2) - 0.3333333) < 1e-6)
 end
 
@@ -46,5 +51,6 @@ do
   local v1 = Vector:from_table({0, 1, 2})
   local v2 = Vector:from_table({3, 4, 5})
 
+  assert(math.abs(Distance:dist(v1, v2, { method = "minkowski", p = 3 }) - 4.326749) < 1e-6)
   assert(math.abs(Distance:minkowski(v1, v2, 3) - 4.326749) < 1e-6)
 end
