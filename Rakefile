@@ -10,9 +10,9 @@ RM = "rm"
 RMFLAGS = "-rf"
 
 task 'test' => [:install] do
-  sh "#{LUA} #{LUAFLAGS} #{TEST_DIR}/math_test.lua"
-  sh "#{LUA} #{LUAFLAGS} #{TEST_DIR}/stats_test.lua"
-  sh "#{LUA} #{LUAFLAGS} #{TEST_DIR}/distance_test.lua"
+  Dir.glob(File.join("**", "test", "*.lua")).each do |t|
+      sh "#{LUA} #{LUAFLAGS} #{t}"
+  end
 end
 
 task 'clean' do
