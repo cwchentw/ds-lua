@@ -4,7 +4,7 @@ Data Science in Lua.
 
 ## Introduction
 
-This module demonstrates common algoritms in data science, including
+This module demonstrates common algorithms in data science, including
 statistics and data mining, in Lua.  Since Lua is a slow language compared
 with C/C++, you should not rely on this module for critical tasks.  In
 addition, this module is still in alpha stage; the API may change without warning.
