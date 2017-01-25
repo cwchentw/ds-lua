@@ -373,7 +373,7 @@ end
 --- Paired/Unpaired T-test
 -- @param v1 vector-like object
 -- @param v2 vector-like object
--- @param options a hash-style table presents options.  Supported options:
+-- @param options Optional. A hash-style table presents options.  Supported options:
 --
 -- * paired: true or false
 -- * one_tailed: true or false
@@ -385,11 +385,26 @@ function Stats:t_test(v1, v2, options)
   assert(type(v1) == "table" and v2["len"] and v2["get"])
   assert(type(v2) == "table" and v2["len"] and v2["get"])
 
-  local mu = options["mu"] or 0
-  if options["paired"] then
+  local mu = nil
+  local paired = nil
+  local one_tailed = nil
+  local equal_var = nil
+
+  if type(options) == "table" then
+    mu = options["mu"]
+    paired = options["paired"]
+    one_tailed = options["one_tailed"]
+    equal_var = options["equal_var"]
+  end
+
+  if mu == nil then
+    mu = 0
+  end
+
+  if paired then
     local t, p = _paired_t_test(v1, v2, mu)
 
-    if not options["one_tailed"] then
+    if not one_tailed then
       p = p * 2
     end
 
@@ -397,7 +412,7 @@ function Stats:t_test(v1, v2, options)
   else
     local t, p = _t_test(v1, v2, options)
 
-    if not options["one_tailed"] then
+    if not one_tailed then
       p = p * 2
     end
 
