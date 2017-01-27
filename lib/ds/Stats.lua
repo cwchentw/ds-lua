@@ -94,7 +94,7 @@ end
 
 --- Range
 -- @param v vector-like object
--- @return A `algo.Vector` object which contains (min, max) of v.
+-- @return (min, max) pair.
 function Stats:range(v)
   assert(type(v) == "table" and v["len"] and v["get"])
 
@@ -121,10 +121,7 @@ function Stats:range(v)
     end
   end
 
-  vec:set(1, min)
-  vec:set(2, max)
-
-  return vec
+  return min, max
 end
 
 --- Quantile

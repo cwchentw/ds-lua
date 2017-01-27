@@ -43,10 +43,10 @@ end
 -- Range
 do
   local v = Vector:from_table({1, 2, 3, 4, 5, 6})
-  local range = Stats:range(v)
+  local min, max = Stats:range(v)
 
-  assert(range:get(1) == 1)
-  assert(range:get(2) == 6)
+  assert(min == 1)
+  assert(max == 6)
 end
 
 -- Quantile
