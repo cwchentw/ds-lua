@@ -15,5 +15,6 @@ package.loaded["ds"] = ds
 ds.Math = require "ds.Math"
 ds.Stats = require "ds.Stats"
 ds.Distance = require "ds.Distance"
+ds.Evaluation = require "ds.Evaluation"
 
 return ds

@@ -3,6 +3,7 @@ file = {
      "lib/ds/Math.lua",
      "lib/ds/Stats.lua",
      "lib/ds/Distance.lua",
+     "lib/ds/Evaluation.lua",
 }
 
 project = "ds"

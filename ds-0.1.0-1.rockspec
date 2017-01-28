@@ -34,5 +34,6 @@ build = {
     ["ds.Math"] = "lib/ds/Math.lua",
     ["ds.Stats"] = "lib/ds/Stats.lua",
     ["ds.Distance"] = "lib/ds/Distance.lua",
+    ["ds.Evaluation"] = "lib/ds/Evaluation.lua",
   }
 }
