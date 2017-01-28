@@ -1,6 +1,6 @@
---- `algo.Vector` class.
+--- `ds.Vector` class.
 -- A factory class that generates specific vector object under user's request.
--- Currently, `algo.DoubleVector` and `algo.LuaVector` are implemented.
+-- Currently, `ds.DoubleVector` and `ds.LuaVector` are implemented.
 -- @classmod Vector
 local DoubleVector = require "ds.DoubleVector"
 local LuaVector = require "ds.LuaVector"

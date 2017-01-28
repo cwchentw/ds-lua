@@ -1,5 +1,5 @@
---- `algo.DoubleMatrix` class.
--- A matrix with the elements of double-precision floating points, which is
+--- `ds.DoubleMatrix` class.
+-- A matrix with double-precision floating points as its elements, which is
 -- implemented in C.  Implicitly called when the elements are numbers.
 -- [ffi from LuaJIT](http://luajit.org/ext_ffi.html) is used for binding.
 -- @classmod DoubleMatrix

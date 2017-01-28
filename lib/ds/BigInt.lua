@@ -1,5 +1,6 @@
---- `algo.BigInt` class.
+--- `ds.BigInt` class.
 -- Arbitrary precision integer.
+-- @classmod BigInt
 local Array = require "algo.Array"
 local String = require "algo.String"
 

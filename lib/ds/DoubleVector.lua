@@ -1,6 +1,6 @@
---- `algo.DoubleVector` class.
--- A vector with double-precision floating points as it elements, which is
--- implemented in C.  Implicitly called when the elements are numbers.
+--- `ds.DoubleVector` class.
+-- A high dimensional vector with double-precision floating points as its elements,
+-- which is implemented in C.  Implicitly called when the elements are numbers.
 -- [ffi from LuaJIT](http://luajit.org/ext_ffi.html) is used for binding.
 -- @classmod DoubleVector
 local ffi = require "ffi"

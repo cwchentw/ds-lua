@@ -1,4 +1,4 @@
---- `algo.LuaVector` class.
+--- `ds.LuaVector` class.
 -- A high dimensional vector which presents Euclidean vectors, including
 -- vector algebra and some statistics.
 -- @classmod LuaVector
