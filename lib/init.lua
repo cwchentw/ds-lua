@@ -12,7 +12,12 @@
 local ds = {}
 package.loaded["ds"] = ds
 
+ds.BigInt = require "ds.BigInt"
 ds.Math = require "ds.Math"
+ds.DoubleVector = require "ds.DoubleVector"
+ds.LuaVector = require "ds.LuaVector"
+ds.Vector = require "ds.Vector"
+ds.DoubleMatrix = require "ds.DoubleMatrix"
 ds.Stats = require "ds.Stats"
 ds.Distance = require "ds.Distance"
 ds.Evaluation = require "ds.Evaluation"
