@@ -23,7 +23,7 @@ Common algorithms for data science implemented in Lua
 }
 
 dependencies = {
-  "lua >= 5.1, < 5.4",
+  "lua >= 5.1, < 5.2",
   "algo >= 0.1.0-1"
 }
 
