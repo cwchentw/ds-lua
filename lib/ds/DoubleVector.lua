@@ -230,7 +230,7 @@ function DoubleVector:from_table(t)
 end
 
 --- Index the vector.
--- @param i the index
+-- @param index the index
 -- @return The element.
 function DoubleVector:get(index)
   return algo_c.ds_double_vector_get(self.vec, index - 1)

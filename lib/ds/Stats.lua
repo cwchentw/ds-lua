@@ -4,7 +4,7 @@
 -- `get` and `len` method.
 -- @classmod Stats
 local Set = require "algo.Set"
-local Vector = require "algo.Vector"
+local Vector = require "ds.Vector"
 local Math = require "ds.Math"
 
 local Stats = {}

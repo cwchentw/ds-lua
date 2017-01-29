@@ -27,15 +27,24 @@ else
 	PREFIX=$(shell echo $$HOME)
 endif
 
+
+
 ifeq ($(USER), "root")
 	DESTDIR=$(PREFIX)
+endif
+
+LUAENV=$(shell luaenv)
+
+ifdef LUAENV
+	DESTDIR=$(shell dirname $(shell $$HOME/.luaenv/libexec/luaenv which lua))/..
 else
 	DESTDIR=$(PREFIX)/.luarocks
 endif
 
 LUA_VERSION=5.1
-CLUADIR ?= $(DESTDIR)/lib/lua/$(LUA_VERSION)
-LUADIR ?= $(DESTDIR)/share/lua/$(LUA_VERSION)/ds
+CLUADIR = $(DESTDIR)/lib/lua/$(LUA_VERSION)
+LUADIR = $(DESTDIR)/share/lua/$(LUA_VERSION)/ds
+
 
 CC=gcc
 CFLAGS_OBJ=-fPIC -std=c11

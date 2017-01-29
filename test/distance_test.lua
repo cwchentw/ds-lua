@@ -1,4 +1,4 @@
-local Vector = require "algo.Vector"
+local Vector = require "ds.Vector"
 local Distance = require "ds.Distance"
 
 -- Euclidean distance

@@ -1,4 +1,4 @@
-local Vector = require "algo.Vector"
+local Vector = require "ds.Vector"
 local Stats = require "ds.Stats"
 
 -- Mean

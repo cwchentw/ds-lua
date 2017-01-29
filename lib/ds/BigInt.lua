@@ -147,7 +147,7 @@ package.loaded['BigInt'] = BigInt
 BigInt.__index = BigInt
 
 --- Create a big integer.
--- @param s a Lua string, Lua number or `algo.String` object
+-- @param x a Lua string, Lua number or `algo.String` object
 -- @return A big integer.
 function BigInt:new(x)
   local _s = nil
