@@ -35,7 +35,7 @@ endif
 
 LUAENV=$(shell luaenv)
 
-ifdef $(LUAENV)
+ifdef LUAENV
 	DESTDIR=$(shell dirname $(shell $$HOME/.luaenv/libexec/luaenv which lua))/..
 else
 	DESTDIR=$(PREFIX)/.luarocks
