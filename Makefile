@@ -35,7 +35,7 @@ endif
 
 LUAENV=$(shell luaenv)
 
-ifdef $(LUAENV)
+ifdef LUAENV
 	DESTDIR=$(shell dirname $(shell $$HOME/.luaenv/libexec/luaenv which lua))/..
 else
 	DESTDIR=$(PREFIX)/.luarocks
@@ -47,8 +47,8 @@ LUADIR = $(DESTDIR)/share/lua/$(LUA_VERSION)/ds
 
 
 CC=gcc
-CFLAGS_OBJ=-fPIC -std=c11
-CFLAGS_LIB=-shared
+CFLAGS_OBJ=-fPIC -std=c11 -fopenmp
+CFLAGS_LIB=-shared -fopenmp -lgomp
 RM=rm
 RMFLAG=-rf
 
