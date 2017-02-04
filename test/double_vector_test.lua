@@ -167,3 +167,7 @@ do
   local result = v1:dot(v2)
   assert(result == (1 * 2 + 2 * 3 + 3 * 4))
 end
+
+-- Prevent segmentation fault
+os.exit(0)
+

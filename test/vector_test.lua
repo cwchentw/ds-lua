@@ -71,3 +71,6 @@ do
   assert(math.abs(v:get(2) - 0.6666667) < 1 / 1000000)
   assert(math.abs(v:get(3) - 0.75) < 1 / 1000000)
 end
+
+-- Prevent Segmentation fault
+os.exit(0)

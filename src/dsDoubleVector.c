@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <math.h>
+#include <omp.h>
 #include "ds.h"
 
 char dtoa(int d) {
@@ -122,6 +123,7 @@ DoubleVector* ds_double_vector_add(DoubleVector* v1, DoubleVector* v2) {
 
   DoubleVector* v = ds_double_vector_new(len1);
 
+  #pragma omp parallel for
   for (int i = 0; i < len1; i++) {
     ds_double_vector_set(v, i,
       ds_double_vector_get(v1, i) + ds_double_vector_get(v2, i));
