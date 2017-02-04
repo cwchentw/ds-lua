@@ -1,3 +1,4 @@
+local unistd = require("posix.unistd")
 local Vector = require("ds.LuaVector")
 
 math.randomseed(1234)
@@ -27,4 +28,10 @@ do
 
   print("Total garbage count: " .. (count_after - count_before))
   print("Average garbage count: " .. (count_after - count_before) / NTIME)
+
+  local pid = unistd.getpid()
+  local f = io.popen("ps -o rss= -p " .. pid)
+  local rss = f:read("*a")
+  f:close()
+  print("RSS: " .. rss)
 end
