@@ -1,3 +1,4 @@
+local unistd = require("posix.unistd")
 local Vector = require("ds.DoubleVector")
 
 -- Benchmark on Vector addition.
@@ -15,13 +16,24 @@ do
 
   local NTIME = 20000
   local time_before = os.time()
+  local count_before = collectgarbage("count")
   for i = 1, NTIME do
     local v = v1 + v2
   end
   local time_after = os.time()
+  local count_after = collectgarbage("count")
 
   print("Total execution time: " .. (time_after - time_before) .. "s")
   print("Average execution time: " .. (time_after - time_before) / NTIME .. "s")
+
+  print("Total garbage count: " .. (count_after - count_before))
+  print("Average garbage count: " .. (count_after - count_before) / NTIME)
+
+  local pid = unistd.getpid()
+  local f = io.popen("ps -o rss= -p " .. pid)
+  local rss = f:read("*a")
+  f:close()
+  print("RSS: " .. rss)
 end
 
 -- Prevent program crash when using OpenMP
