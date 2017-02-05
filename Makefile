@@ -47,8 +47,15 @@ LUADIR = $(DESTDIR)/share/lua/$(LUA_VERSION)/ds
 
 
 CC=gcc
-CFLAGS_OBJ=-fPIC -std=c11 -fopenmp
-CFLAGS_LIB=-shared -fopenmp -lgomp
+
+ifdef USE_OPENMP
+	CFLAGS_OBJ=-DUSE_OPENMP=1 -fPIC -std=c11 -fopenmp
+	CFLAGS_LIB=-DUSE_OPENMP=1 -shared -fopenmp -lgomp
+else
+	CFLAGS_OBJ=-fPIC -std=c11
+	CFLAGS_LIB=-shared
+endif
+
 RM=rm
 RMFLAG=-rf
 
