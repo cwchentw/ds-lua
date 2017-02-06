@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <math.h>
+#ifdef USE_OPENMP
 #include <omp.h>
+#endif
 #include "ds.h"
 
 char dtoa(int d) {
