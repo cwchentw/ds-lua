@@ -32,4 +32,9 @@ dependencies = {
 
 build = {
   type = "make",
+  build_pass = true,
+  install_pass = false,
+  build_variables = {
+    CC = "gcc",
+  }
 }

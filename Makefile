@@ -31,7 +31,7 @@ ifeq ($(USER), "root")
 	DESTDIR=$(PREFIX)
 endif
 
-ifneq (, $(shell luaenv))
+ifneq ("", $(shell luaenv))
 	DESTDIR=$(shell dirname $(shell $$HOME/.luaenv/libexec/luaenv which lua))/..
 else
 	DESTDIR=$(PREFIX)/.luarocks
@@ -41,7 +41,11 @@ LUA_VERSION=5.1
 CLUADIR = $(DESTDIR)/lib/lua/$(LUA_VERSION)
 LUADIR = $(DESTDIR)/share/lua/$(LUA_VERSION)/ds
 
-CC=gcc
+ifdef CC
+	CC=$(CC)
+else
+	CC=gcc
+endif
 
 ifdef USE_OPENMP
 	CFLAGS_OBJ=-DUSE_OPENMP=1 -fPIC -std=c11 -fopenmp
