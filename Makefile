@@ -49,10 +49,10 @@ endif
 
 ifdef USE_OPENMP
 	CFLAGS_OBJ=-DUSE_OPENMP=1 -fPIC -std=c11 -fopenmp
-	CFLAGS_LIB=-DUSE_OPENMP=1 -shared -fopenmp -lgomp
+	CFLAGS_LIB=-DUSE_OPENMP=1 -O2 -shared -fopenmp -lgomp
 else
 	CFLAGS_OBJ=-fPIC -std=c11
-	CFLAGS_LIB=-shared
+	CFLAGS_LIB=-O2 -shared
 endif
 
 RM=rm
