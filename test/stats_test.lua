@@ -155,3 +155,6 @@ do
   assert(math.abs(f - 8.5593220339) < 1e-6)
   assert(math.abs(p - 0) < 1e-6)
 end
+
+-- Prevent program crash when using OpenMP
+os.exit(0)

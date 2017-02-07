@@ -141,6 +141,9 @@ DoubleVector* ds_double_vector_scalar_add(DoubleVector* v1, double s) {
 
   DoubleVector* v = ds_double_vector_new(len);
 
+  #ifdef USE_OPENMP
+  #pragma omp parallel for
+  #endif
   for (int i = 0; i < len; i++) {
     ds_double_vector_set(v, i,
       ds_double_vector_get(v1, i) + s);
@@ -158,6 +161,9 @@ DoubleVector* ds_double_vector_sub(DoubleVector* v1, DoubleVector* v2) {
 
   DoubleVector* v = ds_double_vector_new(len1);
 
+  #ifdef USE_OPENMP
+  #pragma omp parallel for
+  #endif
   for (int i = 0; i < len1; i++) {
     ds_double_vector_set(v, i,
       ds_double_vector_get(v1, i) - ds_double_vector_get(v2, i));
@@ -171,6 +177,9 @@ DoubleVector* ds_double_vector_scalar_sub_first(double s, DoubleVector* v1) {
 
   DoubleVector* v = ds_double_vector_new(len);
 
+  #ifdef USE_OPENMP
+  #pragma omp parallel for
+  #endif
   for (int i = 0; i < len; i++) {
     ds_double_vector_set(v, i,
       s - ds_double_vector_get(v1, i));
@@ -184,6 +193,9 @@ DoubleVector* ds_double_vector_scalar_sub_second(DoubleVector* v1, double s) {
 
   DoubleVector* v = ds_double_vector_new(len);
 
+  #ifdef USE_OPENMP
+  #pragma omp parallel for
+  #endif
   for (int i = 0; i < len; i++) {
     ds_double_vector_set(v, i,
       ds_double_vector_get(v1, i) - s);
@@ -201,6 +213,9 @@ DoubleVector* ds_double_vector_mul(DoubleVector* v1, DoubleVector* v2) {
 
   DoubleVector* v = ds_double_vector_new(len1);
 
+  #ifdef USE_OPENMP
+  #pragma omp parallel for
+  #endif
   for (int i = 0; i < len1; i++) {
     ds_double_vector_set(v, i,
       ds_double_vector_get(v1, i) * ds_double_vector_get(v2, i));
@@ -214,6 +229,9 @@ DoubleVector* ds_double_vector_scalar_mul(DoubleVector* v1, double s) {
 
   DoubleVector* v = ds_double_vector_new(len);
 
+  #ifdef USE_OPENMP
+  #pragma omp parallel for
+  #endif
   for (int i = 0; i < len; i++) {
     ds_double_vector_set(v, i,
       ds_double_vector_get(v1, i) * s);
@@ -231,6 +249,9 @@ DoubleVector* ds_double_vector_div(DoubleVector* v1, DoubleVector* v2) {
 
   DoubleVector* v = ds_double_vector_new(len1);
 
+  #ifdef USE_OPENMP
+  #pragma omp parallel for
+  #endif
   for (int i = 0; i < len1; i++) {
     ds_double_vector_set(v, i,
       ds_double_vector_get(v1, i) / ds_double_vector_get(v2, i));
@@ -244,6 +265,9 @@ DoubleVector* ds_double_vector_scalar_div_first(double s, DoubleVector* v1) {
 
   DoubleVector* v = ds_double_vector_new(len);
 
+  #ifdef USE_OPENMP
+  #pragma omp parallel for
+  #endif
   for (int i = 0; i < len; i++) {
     ds_double_vector_set(v, i,
       s / ds_double_vector_get(v1, i));
@@ -257,6 +281,9 @@ DoubleVector* ds_double_vector_scalar_div_second(DoubleVector* v1, double s) {
 
   DoubleVector* v = ds_double_vector_new(len);
 
+  #ifdef USE_OPENMP
+  #pragma omp parallel for
+  #endif
   for (int i = 0; i < len; i++) {
     ds_double_vector_set(v, i,
       ds_double_vector_get(v1, i) / s);
@@ -274,6 +301,9 @@ DoubleVector* ds_double_vector_pow(DoubleVector* v1, DoubleVector* v2) {
 
   DoubleVector* v = ds_double_vector_new(len1);
 
+  #ifdef USE_OPENMP
+  #pragma omp parallel for
+  #endif
   for (int i = 0; i < len1; i++) {
     ds_double_vector_set(v, i,
       pow(ds_double_vector_get(v1, i), ds_double_vector_get(v2, i)));
@@ -287,6 +317,9 @@ DoubleVector* ds_double_vector_scalar_pow_first(double s, DoubleVector* v1) {
 
   DoubleVector* v = ds_double_vector_new(len);
 
+  #ifdef USE_OPENMP
+  #pragma omp parallel for
+  #endif
   for (int i = 0; i < len; i++) {
     ds_double_vector_set(v, i,
       pow(s, ds_double_vector_get(v1, i)));
@@ -300,6 +333,9 @@ DoubleVector* ds_double_vector_scalar_pow_second(DoubleVector* v1, double s) {
 
   DoubleVector* v = ds_double_vector_new(len);
 
+  #ifdef USE_OPENMP
+  #pragma omp parallel for
+  #endif
   for (int i = 0; i < len; i++) {
     ds_double_vector_set(v, i,
       pow(ds_double_vector_get(v1, i), s));
