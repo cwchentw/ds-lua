@@ -15,12 +15,12 @@ do
   end
 
   local NTIME = 20000
-  local time_before = os.time()
+  local time_before = os.clock()
   local count_before = collectgarbage("count")
   for i = 1, NTIME do
     local v = v1 + v2
   end
-  local time_after = os.time()
+  local time_after = os.clock()
   local count_after = collectgarbage("count")
 
   print("Total execution time (LuaVector): " .. (time_after - time_before) .. "s")
