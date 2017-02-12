@@ -2,6 +2,11 @@
 
 Data Science in Lua.
 
+## Notice
+
+This package intends to demonstrate common algorithms in data science, which
+is implemented in Lua.  Don't use it in production environment.
+
 ## Introduction
 
 This module demonstrates common algorithms in data science, including
@@ -16,11 +21,17 @@ this library targets LuaJIT.
 
 ## Install
 
-Pending.
+After clone the repository, make a LuaRocks package from it.
+
+```
+$ git clone https://github.com/cwchentw/ds-lua.git
+$ cd ds-lua
+$ luarocks make ds-0.1.0-1.rockspec
+```
 
 ## Documentation
 
-After installation, see the API documentation and their examples in the module
+After installation, see the API documentation and their examples in the package
 document.
 
 ```

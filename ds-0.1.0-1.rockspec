@@ -4,7 +4,7 @@ package = "ds"
 version = "0.1.0-1"
 
 source = {
-    url = "..."
+    url = "https://github.com/cwchentw/ds-lua"
 }
 
 description = {
@@ -21,7 +21,7 @@ Common algorithms for data science implemented in Lua
     Compile the package with optional environment variable USE_OPENMP=1 to get
     OpenMP support.  This feature is still experimental.
     ]],
-  homepage = "...",
+  homepage = "https://github.com/cwchentw/ds-lua",
   license = "MIT"
 }
 
