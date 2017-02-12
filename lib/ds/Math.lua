@@ -6,6 +6,34 @@ package.loaded['Math'] = Math
 
 Math.__index = {}
 
+--- Absolute value
+function Math:abs(n)
+  if type(n) == "number" then
+    return math.abs(n)
+  end
+
+  assert(type(n) == "table" and n.sign)
+  n.sign = "+"
+  return n
+end
+
+local function _better_guess(x, g)
+  return (g + x/g) / 2
+end
+
+local function _test_sqrt(x, g, n)
+  if Math:abs(x/g - g) < n then
+    return g
+  else
+    return _test_sqrt(x, _better_guess(x, g), n)
+  end
+end
+
+--- Square of Root
+function Math:sqrt(n)
+  return _test_sqrt(n, n / 2, 1e-6)
+end
+
 --- Gamma function
 function Math:gamma(z)
   local epsilon = 0.0000001
