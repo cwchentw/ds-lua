@@ -21,7 +21,8 @@ this library targets LuaJIT.
 
 ## Install
 
-After clone the repository, make a LuaRocks package from it.
+This package depends on [algo-lua](https://github.com/cwchentw/algo-lua); install
+it first.  Then, clone the repository, make a LuaRocks package from it.
 
 ```
 $ git clone https://github.com/cwchentw/ds-lua.git
