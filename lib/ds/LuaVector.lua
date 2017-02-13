@@ -7,27 +7,7 @@ local Set = require "algo.Set"
 local LuaVector = {}
 package.loaded['algo.LuaVector'] = LuaVector
 
---- Index the vector.
--- Since using builtin indexing is sometimes tricky, use OOP method call `get`
--- is preferred.
-LuaVector.__index = function (t, k)
-  if type(k) == "number" then
-    return t.array:get(k)
-  else
-    return rawget(LuaVector, k)
-  end
-end
-
---- Assign data to the indexed element.
--- Since using builting index assignment is sometimes tricky, use OOP method
--- call `set` is preferred.
-LuaVector.__newindex = function (t, k, v)
-  if type(k) == "number" then
-    t.array:set(k, v)
-  else
-    rawset(LuaVector, k, v)
-  end
-end
+LuaVector.__index = LuaVector
 
 LuaVector.__tostring = function (o)
   local s = "("
