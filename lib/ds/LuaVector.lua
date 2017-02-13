@@ -108,20 +108,28 @@ end
 -- @param b number or vector
 -- @return a new vector
 LuaVector.__sub = function(a, b)
-  local function _scalar_sub(s, v0)
+  local function _scalar_sub_first(s, v0)
     local v = LuaVector:new(v0:len())
-    for i = 1, #v0 do
+    for i = 1, v0:len() do
+      v:set(i, s - v0:get(i))
+    end
+    return v
+  end
+
+  local function _scalar_sub_second(v0, s)
+    local v = LuaVector:new(v0:len())
+    for i = 1, v0:len() do
       v:set(i, v0:get(i) - s)
     end
     return v
   end
 
   if type(a) == "number" then
-    return _scalar_sub(a, b)
+    return _scalar_sub_first(a, b)
   end
 
   if type(b) == "number" then
-    return _scalar_sub(b, a)
+    return _scalar_sub_second(a, b)
   end
 
   assert(a:len() == b:len())
@@ -172,7 +180,15 @@ end
 -- @param b number or vector
 -- @return a new vector
 LuaVector.__div = function (a, b)
-  local function __scalar_div(s, v0)
+  local function __scalar_div_first(s, v0)
+    local v = LuaVector:new(v0:len())
+    for i = 1, v0:len() do
+      v:set(i, s / v0:get(i))
+    end
+    return v
+  end
+
+  local function __scalar_div_second(v0, s)
     local v = LuaVector:new(v0:len())
     for i = 1, v0:len() do
       v:set(i, v0:get(i) / s)
@@ -181,11 +197,11 @@ LuaVector.__div = function (a, b)
   end
 
   if type(a) == "number" then
-    return __scalar_div(a, b)
+    return __scalar_div_first(a, b)
   end
 
   if type(b) == "number" then
-    return __scalar_div(b, a)
+    return __scalar_div_second(a, b)
   end
 
   assert(a:len() == b:len())
